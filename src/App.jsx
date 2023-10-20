@@ -6,18 +6,27 @@ import SideBar from "./components/SideBar";
 function App() {
   const [data, setData] = useState(null);
   const [active, setActive] = useState(false);
+  const [pokemonID, setPokemonID] = useState(null);
+  const [pokemonIdData, setPokemonIdData] = useState(null);
+
+  const getData = async (url, setState) => {
+    const res = await fetch(url);
+    const datos = await res.json();
+
+    setState(datos);
+  };
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=10");
-      const datos = await res.json();
-      console.log(datos.results);
-      setData(datos.results);
-    };
-    getData();
+    getData("https://pokeapi.co/api/v2/pokemon?limit=10", setData);
   }, []);
 
-  const toggleSideBar = () => setActive(!active);
+  useEffect(() => {
+    if (pokemonID === null) return;
+
+    getData(`https://pokeapi.co/api/v2/pokemon/${pokemonID}`, setPokemonIdData);
+  }, [pokemonID]);
+
+  const handlePokID = (id) => setPokemonID(id);
 
   return (
     <div id="main">
@@ -26,13 +35,18 @@ function App() {
       </header>
 
       <div id="contenido">
-        <div id="divCards">
+        <div id="divCards" className={active ? "active" : ""}>
           {data &&
-            data.map((el, i) => (
-              <Card key={i} link={el.url} fnToggle={toggleSideBar} />
+            data.results.map((el, i) => (
+              <Card
+                key={i}
+                link={el.url}
+                fnID={handlePokID}
+                setActive={setActive}
+              />
             ))}
         </div>
-        {active && <SideBar />}
+        {active && <SideBar dataPok={pokemonIdData} setActive={setActive} />}
       </div>
     </div>
   );
