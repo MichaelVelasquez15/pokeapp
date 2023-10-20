@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* PRIMERA */
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #c55356;
+}
+
+h1 {
+  position: absolute;
+  top: 10px;
+  text-align: center;
+}
+
+#content {
+  height: 60%;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+form {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+form > input {
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+form > div > button {
+  font-size: 1.3rem;
+  border: 0;
+  background-color: hsl(357, 66%, 79%);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#card {
+  height: 100%;
+  background-color: #d2d2d2;
+  width: 50%;
+}
+
+#card > div:first-child {
+  height: 75%;
+  text-align: center;
+}
+
+#imgPokemon {
+  height: 100%;
+  width: auto;
+}
+
+#card > div:last-child {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 10px;
+}
+
+/* SEGUNDA */
+
+#main {
+  min-height: 100vh;
+}
+
+#main > header {
+  height: 10vh;
+  padding: 0 20px;
+}
+
+#contenido {
+  display: flex;
+  width: 100vw;
+}
+
+#divCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  min-width: 50vw;
+}
+
+.card {
+  background-color: grey;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+#sideBar {
+  width: 50vw;
+}
